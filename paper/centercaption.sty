@@ -1,0 +1,17 @@
+\long\def\@makecaption#1#2{%
+ \captionstyle
+ \ifx\@captype\fig@type
+   \vskip\figcapgap
+ \fi
+ \setbox\@tempboxa\hbox{{\floatlegendstyle #1\floatcounterend}%
+ \capstrut #2}%
+ \ifdim \wd\@tempboxa >\hsize
+   {\floatlegendstyle #1\floatcounterend}\capstrut #2\par
+ \else
+   \hbox to\hsize{\hfil\unhbox\@tempboxa\hfil}%
+ \fi
+ \ifx\@captype\fig@type\else
+   \vskip\tabcapgap
+ \fi}
+
+
