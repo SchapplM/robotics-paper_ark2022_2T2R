@@ -1,0 +1,99 @@
+%% Creator: Inkscape inkscape 0.92.4, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'kinematic_principle.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \newcommand*\fsize{\dimexpr\f@size pt\relax}%
+  \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{331.65354331bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.2991453)%
+    \lineheight{1}%
+    \setlength\tabcolsep{0pt}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{kinematic_principle.pdf}}%
+    \put(0.33710204,0.08147486){\color[rgb]{0.90196078,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{$D'$}\end{tabular}}}}%
+    \put(0.21665654,0.03267363){\color[rgb]{0,0,0.94117647}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{$E'$}\end{tabular}}}}%
+    \put(0.26137443,0.07329496){\color[rgb]{0.89411765,0,0.70980392}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\ResR_\mathrm{t}$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{kinematic_principle.pdf}}%
+    \put(0.04322525,0.00459725){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\ks{0}$\end{tabular}}}}%
+    \put(0.12068391,0.03852978){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\vec{e}_x^{0}$\end{tabular}}}}%
+    \put(0.08502816,0.05298778){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\vec{e}_y^{0}$\end{tabular}}}}%
+    \put(0.05884374,0.08856662){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\vec{e}_z^{0}$\end{tabular}}}}%
+    \put(0.11167118,0.17929313){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\ks{E}$\end{tabular}}}}%
+    \put(0.22671751,0.15699376){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\vec{e}_x^{E}$\end{tabular}}}}%
+    \put(0.17462269,0.13465415){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\vec{e}_z^{E}$\end{tabular}}}}%
+    \put(0.13589621,0.14621884){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\vec{e}_y^{E}$\end{tabular}}}}%
+    \put(0.35524651,0.27391133){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\ks{D}$\end{tabular}}}}%
+    \put(0.37571025,0.23177945){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\vec{e}_x^{D}$\end{tabular}}}}%
+    \put(0.3180772,0.2162906){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\vec{e}_z^{D}$\end{tabular}}}}%
+    \put(0.29457381,0.26706039){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\vec{e}_y^{D}$\end{tabular}}}}%
+    \put(0.45431166,0.14635437){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$\ks{0}$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{kinematic_principle.pdf}}%
+    \put(0.90092578,0.14635437){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$\ks{D}$\end{tabular}}}}%
+    \put(0.47437331,0.24100939){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$\bm{R}_x(\varphi_x) \bm{R}_y(\varphi_y) $\end{tabular}}}}%
+    \put(0.58305255,0.0674215){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$\ks{E}$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{kinematic_principle.pdf}}%
+    \put(0.51075758,0.10717713){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$\rotmat{0}{E}(\bm{q})$\end{tabular}}}}%
+    \put(0.67791556,0.0285089){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$\bm{R}_y(\alpha_y) \bm{R}_x(\alpha_x)$\end{tabular}}}}%
+    \put(0.71827025,0.21595208){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$\ks{A1}$\end{tabular}}}}%
+    \put(0.7456381,0.0674215){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$\ks{A2}$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{kinematic_principle.pdf}}%
+    \put(0.89606565,0.0517404){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$\bm{R}_z(\alpha_z)$\end{tabular}}}}%
+    \put(0.65723215,0.16510364){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$\bm{R}_z(\varphi_z{+}\alpha_z)$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{kinematic_principle.pdf}}%
+    \put(0.82619407,0.24100939){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$\bm{R}_z(\varphi_z)$\end{tabular}}}}%
+    \put(0.00640714,0.00514714){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}\textbf{(a)}\end{tabular}}}}%
+    \put(0.47352722,0.00514714){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}\textbf{(b)}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=7]{kinematic_principle.pdf}}%
+    \put(0.35398696,0.19043149){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\tiny{$d_{z,\mathrm{min}}$}\end{tabular}}}}%
+    \put(0.34576237,0.1518035){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\tiny{$d_{z,\mathrm{max}}$}\end{tabular}}}}%
+    \put(0.35047569,0.17191702){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\tiny{$d_{z}$}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=8]{kinematic_principle.pdf}}%
+    \put(0.23285905,0.23895164){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\bm{r}_{DE}$\end{tabular}}}}%
+    \put(0.27546455,0.19522863){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\tiny{$d_{y}$}\end{tabular}}}}%
+    \put(0.20568221,0.20589679){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\tiny{$d_{x}$}\end{tabular}}}}%
+  \end{picture}%
+\endgroup%

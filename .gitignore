@@ -25,13 +25,13 @@
 *.toc
 *.soc
 *.idx
+*.thm
 *.pdfsync
 *~
 Thumbs.db
 *.sav
 *.asv
 *.fig
-*.png
 *.mp4
 *.mat
 *.orig
