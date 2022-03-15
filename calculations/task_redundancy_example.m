@@ -1,19 +1,19 @@
-% Berechnungen und Plots für das Paper
-% limred z_rot&z_trans mit 3T2R&2T2R vorläufig in ein Skript
+% Example for functional redundancy with 2T2R and 2T3R EE DoF
+% This creates Fig. 2 and 3 of the paper
+
+% Moritz Schappler, moritz.schappler@imes.uni-hannover.de, 2022-01
+% (C) Institut für Mechatronische Systeme, Leibniz Universität Hannover
 
 close all
 clear
 clc
-% Unterdrücke Warnung für Schlechte Konditionierung der Jacobi-Matrix
-warning('off', 'MATLAB:rankDeficientMatrix');
-warning('off', 'Coder:MATLAB:rankDeficientMatrix'); % gleiche Warnung aus mex-Datei
-if isempty(which('serroblib_path_init.m'))
-  warning('Repo mit seriellen Robotermodellen ist nicht im Pfad. Beispiel nicht ausführbar.');
-  return
-end
 
-%% Benutzereingaben
-usr_create_anim = true;
+
+%% User Settings
+usr_create_anim = false;
+usr_plot_robot = true; % to enable robot plot (Fig. 2)
+usr_plot_convergence = true;  % to enable convergence plot (Fig. 3)
+usr_plot_debug = false; % Debug-Plots showing the robot and all frames
 usr_recreate_mex = false;
 use_mex_functions = true;
 usr_ptno = 2; % number of the point to select from the predefined ones
@@ -24,12 +24,16 @@ Robots = {
          {'S6RRRRRR10V2', 'S6RRRRRR10V4_UR5'}, ...    
          };
 
+if isempty(which('serroblib_path_init.m'))
+  warning('Repo mit seriellen Robotermodellen ist nicht im Pfad. Beispiel nicht ausführbar.');
+  return
+end
+
 % Einstellungen
 this_dir = fileparts(which('task_redundancy_example'));
 respath = fullfile(this_dir);
 paperfig_path = fullfile(respath, '..', 'paper', 'figures');
 mkdirs(respath);
-debug_mode = false;
 
 % Endeffektor-Transformation ungleich Null festlegen, um zu prüfen, ob die
 % Implementierung davon richtig ist
@@ -134,9 +138,10 @@ for Robot_Data_i = use_RobotNr:use_RobotNr
   q0 = RS.qref;
                                                                                     
   % Debug-plot aller Punkte
+  if usr_plot_debug
   s_plot = struct( 'ks', [RS.NJ+2, RS.NJ+2], 'straight', 0);
   s_plot_KS = struct( 'ks', [8, RS.NJ+2], 'straight', 0, 'mode', 2);
-  figure(11);clf;hold on;grid on;
+  change_current_figure(11);clf;hold on;grid on;
   xlabel('x [m]');ylabel('y [m]');zlabel('z [m]');
   view(3);
   RS.plot( q0, s_plot );
@@ -145,19 +150,22 @@ for Robot_Data_i = use_RobotNr:use_RobotNr
     T_0_Ek = RS.x2t(XE(k,:)');
     trplot(T_0_Ek, 'frame', sprintf('D%d',k), 'rgb', 'length', 0.4)
   end
-  
+  end
   if ~(any(1:size(XE,1) == usr_ptno))
     error('Punkt ist nicht in XE enthalten -> neu wählen');
   end
   %% Compute IK with different settings
   Names_Methods = {'3T2R', '2T2R', '2T2R_limred', '2T3R_limred'};
   Names_Methods_Leg = {'3T2R', '2T2R', '2T2R*', '2T3R*'};
+  Phirt_tol = 1e-6;
   s_default = struct( ...
     'scale_lim', 0, ...
     'wn', zeros(RS.idx_ik_length.wnpos,1), ...
+    'maxstep_ns', 1e-6, ...
+    'Phit_tol', Phirt_tol, 'Phir_tol', Phirt_tol, ...
+    'maxrelstep', 0.05, ...
     'xlim', xlim_2T2R, ...
     'retry_limit', 0);
-  Phirt_tol = 1e-8;
   Stats_all = cell(length(Names_Methods), size(XE,1));
   n_max = 2500;
   for k = 1:length(Names_Methods)
@@ -182,7 +190,13 @@ for Robot_Data_i = use_RobotNr:use_RobotNr
       error('Case unexpected');
     end
     for i = usr_ptno:usr_ptno
-      [q, phi, ~, Stats] = RS.invkin2(RS.x2tr(XE_k(i,:)'), q0, s);
+      % Run inverse kinematics algorithm (actual motion for paper results)
+      comptimes = NaN(11,1);
+      for jj = 1:11 % run 10 times to have valid timing information (first run for warm-up)
+        t0 = tic();
+        [q, phi, ~, Stats] = RS.invkin2(RS.x2tr(XE_k(i,:)'), q0, s);
+        comptimes(jj) = toc(t0);
+      end
       % Dummy-IK, um Werte für Nebenbedingungen zu 
       s_dummy = struct('finish_in_limits', false, ...
         'retry_on_limitviol', false, 'n_max', 1, 'retry_limit', 0, ...
@@ -226,6 +240,8 @@ for Robot_Data_i = use_RobotNr:use_RobotNr
       Stats.I_constr_r_red = RS.I_constr_r_red;
       % Store indices for converged steps of the IK
       Stats.I_iO = all(abs(Stats.PHI(1:Stats.iter+1,Stats.I_constr_red))<1e-3, 2);
+      % Store timing information
+      Stats.comptimes = comptimes;
       Stats_all{i,k} = Stats;
       % Warnung, wenn aktuelle IK ungültig
       if any(abs(phi) > Phirt_tol)
@@ -235,7 +251,8 @@ for Robot_Data_i = use_RobotNr:use_RobotNr
     end % i (reference points)
   end % k (methods)
   
-  %% Plot results
+  %% Plot results: This creates Fig. 3 of the paper
+  if usr_plot_convergence
   i = usr_ptno(1);
   sphdl = NaN(1,3);
   fighdl = figure(1);clf;
@@ -266,7 +283,11 @@ for Robot_Data_i = use_RobotNr:use_RobotNr
   plot([1;100], 1e3*xlim_dz_thr(2)*[1;1], 'm--', 'LineWidth',1);
   grid on;
   xlabel('IK progress in percent');
-  ylabel('distance $d_z$ in mm', 'interpreter', 'latex');
+  ylh1 = ylabel('distance $d_z$ in mm', 'interpreter', 'latex');
+  [X1_off, X1_slope] = get_relative_position_in_axes(sphdl(1), 'x');
+  [Y1_off, Y1_slope] = get_relative_position_in_axes(sphdl(1), 'y');
+  set(ylh1, 'Position', [X1_off+X1_slope*(-1.45),Y1_off+Y1_slope*(-0.2), 0])
+  ylim([-800, 1000])
 
   LegStr = Names_Methods_Leg; % [Names_Methods_Leg, 'lim', 'thresh'];
   leghdl = legend(linhdl_leg, LegStr);
@@ -287,7 +308,10 @@ for Robot_Data_i = use_RobotNr:use_RobotNr
   line_format_publication(leglinhdl2, lineformat_dashed);
   grid on;
   xlabel('IK progress in percent');
-  ylabel('coordinate $\varphi_z$ in deg', 'interpreter', 'latex');
+  ylh2 = ylabel('coordinate $\varphi_z$ in deg', 'interpreter', 'latex');
+  [X2_off, X2_slope] = get_relative_position_in_axes(sphdl(2), 'x');
+  [Y2_off, Y2_slope] = get_relative_position_in_axes(sphdl(2), 'y');
+  set(ylh2, 'Position', [X2_off+X2_slope*(-1.43),Y2_off+Y2_slope*( 0), 0])
 %   legend(leglinhdl, Names_Methods_Leg);
   
 %   figure(3); clf; figure_format_publication(gcf);
@@ -310,8 +334,8 @@ for Robot_Data_i = use_RobotNr:use_RobotNr
   figure_format_publication(sphdl);
   set_size_plot_subplot(fighdl, ...
     11.7,4,sphdl,...
-    0.095,0.02,0.14,0.14,... %l r u d
-    0.08,0) % x y
+    0.085,0.02,0.14,0.14,... %l r u d
+    0.09,0) % x y
   for kk = 1:3
     set(sphdl(kk), 'xticklabel', {});
     axes(sphdl(kk)); %#ok<LAXES>
@@ -326,16 +350,31 @@ for Robot_Data_i = use_RobotNr:use_RobotNr
   drawnow();
   exportgraphics(fighdl, fullfile(paperfig_path,['ik_results','.pdf']),...
     'ContentType','vector');
+  end
   %% Print additional information
   % This is used in the text in the paper in Sect. 4
   for i = usr_ptno:usr_ptno
+%     change_current_figure(100+i);clf;hold on;
     for kk = 1:length(Names_Methods)
       Stats = Stats_all{i,kk};
-      fprintf('Point %d: Number of iterations for method %d (%s): %d\n', ...
-        i, kk, Names_Methods{kk}, Stats.iter);
+      fprintf('Point %d: method %d (%s): %d\n', i, kk, Names_Methods{kk});
+      fprintf('Number of iterations %d\n', Stats.iter);
+      fprintf('Computation time total: %1.1fms (n=%d, σ=%1.3fms)\n', ...
+        1e3*mean(Stats.comptimes(2:end)), length(Stats.comptimes(2:end)), ...
+        1e3*std(Stats.comptimes(2:end)));
+      fprintf('Computation time (per sample): %1.1fµs (n=%d, σ=%1.3fµs)\n', ...
+        1e6*mean(Stats.comptimes(2:end)/Stats.iter), length(Stats.comptimes(2:end)), ...
+        1e6*std(Stats.comptimes(2:end)/Stats.iter));
+      Qdiff = diff(Stats.Q(1:Stats.iter+1,:));
+      Qdiffabssum = sum(abs(Qdiff), 2);
+      Qdiffmaxsingle = max(abs(Qdiff), [], 2);
+%       plot(Qdiffabssum);
+      fprintf('Initial change of summed joint angle sum: %1.1f deg\n', ...
+        Qdiffabssum(1)*180/pi);
     end
   end
-  %% Create Robot Figures
+  %% Create Robot Figures. This creates Fig. 2 of the paper
+  if usr_plot_robot
   for i = usr_ptno:usr_ptno
     for kk = 1:length(Names_Methods)
       for ii_q0 = 1:2
@@ -350,7 +389,7 @@ for Robot_Data_i = use_RobotNr:use_RobotNr
       % Plot allowed range for the dz distance
       pts_ax = [eye(3,4)*T_0_Di*[0;0;xlim_2T2R(3,1);1], ...
                 eye(3,4)*T_0_Di*[0;0;xlim_2T2R(3,2);1]];
-      plot3(pts_ax(1,:), pts_ax(2,:), pts_ax(3,:), 'k--');
+      plot3(pts_ax(1,:), pts_ax(2,:), pts_ax(3,:), 'k--', 'LineWidth', 2);
       trplot(T_0_Di, 'frame', sprintf('D'), 'rgb', 'length', 0.4)
       if ii_q0 == 1, i_Q = 1;
       else,          i_Q = Stats.iter+1;
@@ -363,13 +402,36 @@ for Robot_Data_i = use_RobotNr:use_RobotNr
       set(get(gca, 'XAxis'), 'visible', 'off');
       set(get(gca, 'YAxis'), 'visible', 'off');
       set(get(gca, 'ZAxis'), 'visible', 'off');
+      % increase line width of frames and annotations
+      ach = get(gca, 'children');
+      for iii = 1:length(ach)
+        if strcmp(get(ach(iii), 'type'), 'hgtransform') % coordinate frame
+          hgtrch = get(ach(iii), 'children');
+          for jj = 1:length(hgtrch)
+            if strcmp(get(hgtrch(jj), 'type'), 'line')
+              set(hgtrch(jj), 'LineWidth', 1.5)
+            end
+            if strcmp(get(hgtrch(jj), 'type'), 'text')
+              delete(hgtrch(jj)); % Put xyz label manually in InkScape
+              % set(hgtrch(jj), 'Units', 'points', 'FontSize', 6)
+            end
+          end
+        end
+        if contains(get(ach(iii), 'displayname'), 'Link_')
+          set(ach(iii), 'EdgeColor', [0 0 1], 'FaceAlpha', 1, ...
+            'FaceColor', 0.7*[1 1 1]); % Blue links, grey Face
+        end
+      end
       name = sprintf('Rob_M%d_%s', kk, Names_Methods{kk});
       if ii_q0 == 1, name = [name, '_q0']; end %#ok<AGROW>
       cd(paperfig_path);
+%       set_size_plot_subplot(fhld_kk, ...
+%         6,6,gca,0,0,0,0,0,0); %w,b,axhdl l r u d x y
       drawnow()
-      export_fig([name, '.png'], '-r864');
+      exportgraphics(fhld_kk, [name, '.png'], 'Resolution', '200');
       end
     end
+  end
   end
   %% Create Animations
   if usr_create_anim

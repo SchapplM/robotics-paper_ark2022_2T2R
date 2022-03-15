@@ -60,8 +60,23 @@
     \put(0.56517865,0.00814637){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}(\textbf{d}) 2T2R* ($d_z$ lim.)\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{robots_ik_results.pdf}}%
     \put(0.79249444,0.00814637){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}(\textbf{e}) 2T3R* ($d_z$ lim.)\end{tabular}}}}%
-    \put(0.02840419,0.09942223){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\tiny{$d_{z,\mathrm{min}}<d_z<d_{z,\mathrm{max}}$}\end{tabular}}}}%
-    \put(0.03790825,0.12916928){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}allowed range\end{tabular}}}}%
+    \put(0.02840419,0.09021933){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\tiny{$d_{z,\mathrm{min}}<d_z<d_{z,\mathrm{max}}$}\end{tabular}}}}%
+    \put(0.03790825,0.11996638){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}allowed range\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{robots_ik_results.pdf}}%
+    \put(0.05552127,0.04580905){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\tiny{$\ks{0}$}\end{tabular}}}}%
+    \put(0.23632077,0.0440212){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\tiny{$\ks{0}$}\end{tabular}}}}%
+    \put(0.34671472,0.04827514){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\tiny{$\ks{0}$}\end{tabular}}}}%
+    \put(0.63083385,0.05176128){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\tiny{$\ks{0}$}\end{tabular}}}}%
+    \put(0.81908459,0.04804177){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\tiny{$\ks{0}$}\end{tabular}}}}%
+    \put(0.96550175,0.21904853){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\tiny{$\ks{D}$}\end{tabular}}}}%
+    \put(0.77626265,0.22548652){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\tiny{$\ks{D}$}\end{tabular}}}}%
+    \put(0.50318288,0.22606754){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\tiny{$\ks{D}$}\end{tabular}}}}%
+    \put(0.36780507,0.20224575){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\tiny{$\ks{D}$}\end{tabular}}}}%
+    \put(0.17548718,0.22325589){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\tiny{$\ks{D}$}\end{tabular}}}}%
+    \put(0.0444568,0.2174924){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\tiny{$\ks{E}$}\end{tabular}}}}%
+    \put(0.34963178,0.24582217){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\tiny{$\ks{E}$}\end{tabular}}}}%
+    \put(0.54146205,0.09020211){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\tiny{$\ks{E}$}\end{tabular}}}}%
+    \put(0.69034346,0.24296379){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\tiny{$\ks{E}$}\end{tabular}}}}%
+    \put(0.88266136,0.23129675){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\tiny{$\ks{E}$}\end{tabular}}}}%
   \end{picture}%
 \endgroup%
