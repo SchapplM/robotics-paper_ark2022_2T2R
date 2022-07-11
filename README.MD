@@ -3,7 +3,7 @@
 
 Authors: Moritz Schappler, Tobias Blum, and Tim-David Job
 
-This code is supplemental material to the following submission to the [ARK Conference 2022](https://ark2022.com/):
+This code is supplemental material to the following publication at the [ARK Conference 2022](https://ark2022.com/):
 
 ```bib
 @InProceedings{SchapplerBluJob2022,
@@ -12,6 +12,7 @@ This code is supplemental material to the following submission to the [ARK Confe
   title        = {Geometric Model for Serial-Chain Robot Inverse Kinematics in the Case of Two Translational DoF with Spatial Rotation and Task Redundancy},
   organization = {Springer},
   year         = {2022},
+  doi          = {10.1007/978-3-031-08140-8_43},
 }
 ```
 
@@ -43,15 +44,15 @@ For the Matlab scripts to work, the following steps have to be performed:
     * [Toolbox for various Matlab functions](https://github.com/SchapplM/matlab_toolbox) (tested with rev. da5759e; 2022-01-04)
     * [Robotics toolbox](https://github.com/SchapplM/robotics-toolbox) (tested with rev. 309b96d; 2022-01-17)
     * [Serial robot model database](https://github.com/SchapplM/robsynth-serroblib) (tested with rev. 67c556b9b; 2022-01-17)
-    * Update the repositories to the given versions. If the master branch is on an older version, change of branch is required. You should first try the more recent version before downgrading to the given versions. It should still work.
+    * Update the repositories to the given versions. You should first try the more recent version before downgrading to the given versions. It should still work.
     * Short command to download all repositories (run in Git Bash in Windows or in Linux terminal):
       ```Bash
-      git clone git@github.com:SchapplM/robotics-dep-geometry.git -b dev
-      git clone git@github.com:SchapplM/robotics-dep-traj.git -b dev
-      git clone git@github.com:SchapplM/robotics-dep-ext.git -b dev
-      git clone git@github.com:SchapplM/matlab_toolbox.git -b dev
-      git clone git@github.com:SchapplM/robotics-toolbox.git -b dev
-      git clone git@github.com:SchapplM/robsynth-serroblib.git -b dev
+      git clone git@github.com:SchapplM/robotics-dep-geometry.git
+      git clone git@github.com:SchapplM/robotics-dep-traj.git
+      git clone git@github.com:SchapplM/robotics-dep-ext.git
+      git clone git@github.com:SchapplM/matlab_toolbox.git
+      git clone git@github.com:SchapplM/robotics-toolbox.git
+      git clone git@github.com:SchapplM/robsynth-serroblib.git
       ```
 4. Run the path initialization scripts (`..._path_init.m`) of all downloaded software repos in Matlab. Put the run commands in the startup.m file of Matlab if used frequently.
 
